@@ -1,0 +1,142 @@
+<div class="row">
+  <div class="col-md-8">
+      <section class="panel">
+          <header class="panel-heading tab-bg-primary ">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a data-toggle="tab" href="#home">Personal</a>
+              </li>
+              <li class="">
+                <a data-toggle="tab" href="#about">Contact</a>
+              </li>
+              <li class="">
+                <a data-toggle="tab" href="#profile">Parents</a>
+              </li>
+              <li >
+                <a data-toggle="tab" href="#contact">Others</a>
+              </li>
+            </ul>
+          </header>
+          <div class="panel-body">
+            <div class="tab-content">
+              <div id="home" class="tab-pane active"><br>
+                 <div class="personal">
+                    <form #personal="ngForm" #personal="ngForm" (ngSubmit)=updatePersonal(personal.value) method="#" action="#">
+                      <div class="row">
+                        <div class="col-md-4">
+                            <label>First Name *</label>
+                            <input type="text" class="form-control" #firstName="ngModel" [(ngModel)]="personalDetails.firstName" name="firstName" ngModel placeholder="First Name">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Last Name *</label>
+                            <input type="text" class="form-control" #lastName="ngModel" name="lastName" [(ngModel)]="personalDetails.lastName" ngModel placeholder="Last Name">
+                        </div>
+                        <div class="col-md-4">
+                          <label>Gender *</label>
+                          <select class="form-control" name="gender" #gender="ngModel" [(ngModel)]="personalDetails.gender" ngModel>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Others</option>
+                          </select>
+                        </div>
+                      </div><br>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label>Blood Group *</label>
+                          <select class="form-control" name="bloodGroup" #bloodGroup="ngModel" [(ngModel)]="personalDetails.bloodgroup" ngModel>
+                              <option value="A">A</option>
+                              <option value="A+">A+</option>
+                              <option value="O">O</option>
+                              <option value="O+">O+</option>
+                              <option value="AB">AB</option>
+                              <option value="AB-">AB-</option>                          </select>
+                        </div>
+                        <div class="col-md-4">
+                          <label>Date Of Birth *</label>
+                          <input type="date" name="dob" #dob="ngModel" ngModel class="form-control" [(ngModel)]="personalDetails.dateOfBirth" placeholder="Date Of Birth" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Religion</label>
+                            <select name="religion" #religion="ngModel" ngModel class="form-control" required>
+                               <option value="" disabled>Religion</option>
+                               <option value="hinduism">Hinduism</option>
+                               <option value="islam">Islam</option>
+                               <option value="christianity">Christianity</option>
+                               <option value="jainism">Jainism</option>
+                               <option value="buddhism">Buddhism</option>
+                               <option value="judaism">Judaism</option>
+                            </select>                        </div>
+                      </div><br>
+                      <div class="row">
+                        <div class="col-md-4">
+                            <label>Caste *</label>
+                            <select name="caste" #caste="ngModel" [(ngModel)]="personalDetails.caste" ngModel class="form-control" required>
+                               <option value="" disabled>Caste</option>
+                               <option value="bc">BC</option>
+                               <option value="mbc">MBC</option>
+                               <option value="oc">OC</option>
+                               <option value="sc">SC</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Mother Tongue *</label>
+                            <select name="motherTongue" #motherTongue="ngModel" [(ngModel)]="personalDetails.motherTongue" ngModel class="form-control" required>
+                               <option value="" disabled>Mother Tongue</option>
+                               <option value="tamil">Tamil</option>
+                               <option value="telugu">Telugu</option>
+                               <option value="kannda">Kannda</option>
+                               <option value="malayalam">Malayalam</option>
+                               <option value="hindi">hindi</option>
+                               <option value="bengali">Bengali</option>
+                               <option value="english">English</option>
+                               <option value="punjabi">Punjabi</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Nationality</label>
+                            <select name="nationality" #nationality="ngModel" [(ngModel)]="personalDetails.nationality" ngModel class="form-control" required>
+                               <option value="" disabled>Nationality</option>
+                               <option value="india">India</option>
+                               <option value="srilanka">SriLanka</option>
+                               <option value="pakistan">Pakistan</option>
+                               <option value="bangaladesh">Bangaladesh</option>
+                               <option value="malasiya">Malasiya</option>
+                               <option value="singapore">Singapore</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="row"><br>
+                        <div class="col-md-4">
+                            <label>Aaadhar Number *</label>
+                            <input type="text" name="aaadharNumber" #aaadharNumber="ngModel" [(ngModel)]="personalDetails.aaadharNumber" ngModel class="form-control" placeholder="AaadharNumber" required>
+                        </div>
+                      </div><br>
+                      <button class="btn btn">Save</button>
+                    </form>
+                  </div>
+              </div>
+              <div id="about" class="tab-pane">About</div>
+              <div id="profile" class="tab-pane">Profile</div>
+              <div id="contact" class="tab-pane">Contact</div>
+            </div>
+          </div>
+        </section>
+  </div>
+  <div class="col-md-4">
+      <section class="panel">
+          <header class="panel-heading tab-bg-primary ">
+            <ul class="nav nav-tabs">
+             <h4 style="color:white" class="text-center">{{session.username}}</h4>
+             
+            </ul>
+          </header>
+          <div class="panel-body">
+            <div class="tab-content">
+              <div class="img text-center">
+                <img src="../../../assets/img/school/user.png" width="100">
+              </div>
+            </div>
+          </div>
+        </section>
+  </div>
+</div>

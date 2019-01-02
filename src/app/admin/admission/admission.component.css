@@ -1,0 +1,11 @@
+.panel-heading{
+    padding:5px;
+}
+.alert{
+    padding: 0px;
+    margin-bottom: 0px;
+    font-size: 1rem;
+}
+label::last-word{
+    color: red
+}

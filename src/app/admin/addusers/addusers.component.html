@@ -1,0 +1,117 @@
+
+
+
+<div class="container">
+  <div class="adduser">
+    <div class="row">
+      <div class="col-md-5">
+          <div class="panel">
+            <header class="panel-heading">
+             Add User
+            </header>
+        <div class="panel-body">
+         <form class="form" method="" action="" #adduserForm="ngForm" (ngSubmit)='adduser(adduserForm.value)'>
+            <div class="form-group">
+              <label>Role</label>
+                <select class="form-control" name="role" (change)="Userstudent(adduserForm.value)" #role="ngModel" ngModel>
+                  <option value="" disabled>Select</option>
+                  <option value="admin">Admin</option>
+                  <option value="teachers">Teacher</option>
+                  <option value="student">Student</option>
+                </select>
+              </div>
+            <div class="student" [hidden]="role1=='admin' || role1=='teachers'" >
+              <div class="form-group">
+                <select class="form-control" name="standard" (change)="findStd(standard.value)" #standard="ngModel" ngModel>
+                  <option value="" disabled>Standard</option>
+                  <option value="12">12</option>
+                  <option value="11">11</option>
+                  <option value="10">10</option>
+                  <option value="9">9</option>
+                  <option value="8">8</option>
+                  <option value="7">7</option>
+                  <option value="6">6</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <select class="form-control" name="rollno" #rollno="ngModel" ngModel>
+                  <option value="" disabled>Student Name</option>
+                  <option *ngFor="let details of findStudent" value="{{details.rollno}}">{{details.personalDetails.firstName}}</option>
+                </select>
+              </div>
+            </div>
+           <div class="form-group">
+            <input type="email" class="form-control" name="email" id="email" #email="ngModel" ngModel aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+              <input type="text" class="form-control" name="username" #username="ngModel" ngModel id="username" placeholder="User Name">
+            </div>
+          <div class="form-group">
+            <input type="password" class="form-control" name="password" id="password" ngModel #password="ngModel" placeholder="Password">
+          </div>
+         
+          <div class="form-check">
+              <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="">
+                  Option one is this
+                  <span class="form-check-sign">
+                      <span class="check"></span>
+                  </span>
+              </label>
+          </div>
+        
+          <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+        </form>
+        </div>
+        </div>
+      </div>
+      
+      <div class="col-md-7">
+       <div class="panel">
+        <div class="panel-heading">
+          View Users List
+        </div>
+        <div class="panel-body">
+            <select class="form-control" (change)="findUser(role.value)" name="role" #role="ngModel" ngModel>
+                <option value="" disabled>Select</option>
+                <option value="admin">Admin</option>
+                <option value="teachers">Teacher</option>
+                <option value="student">Student</option>
+              </select>
+          <table class="table bg-light">
+              <thead>
+                  <tr>
+                      <th class="text-center">#</th>
+                      <th>Name</th>
+                      <th>Role</th>
+                      <th>Username</th>
+                      <th>Password</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let user of getAllUser;let i=index">
+                      <td class="text-center">{{i+1}}</td>
+                      <td>{{user.username}}</td>
+                      <td>{{user.role}}</td>
+                      <td>{{user.email}}</td>
+                      <td>{{user.password}}</td>
+                      <td class="td-actions text-right">
+                          <button (click)=del(user) type="button" rel="tooltip" class="btn btn-danger">
+                              <i class="fa fa-times-circle" aria-hidden="true"></i>
+                          </button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="login-img3-body">
+
+  <div class="container">
+
+    <form class="form login-form " method="" action="" #loginForm="ngForm" (ngSubmit)='onLogin(loginForm.value)'   novalidate>    
+      <div class="login-wrap">
+        <p class="login-img"><i class="icon_lock_alt"></i></p>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_profile"></i></span>
+          <input type="text"  class="form-control" placeholder="Username" name="email" #Email="ngModel" ngModel required autofocus>
+          <div *ngIf="Email.errors && (Email.touched|| Email.dirty)" class="alert text-danger">
+            <div [hidden]="!Email.errors.required">
+                *Emailid required
+            </div>
+            <div [hidden]="!Email.errors.pattern">
+                  *Please enter valid email
+            </div>                                                      
+        </div>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+          <input type="password" class="form-control" placeholder="Password" name="password" #Password="ngModel" minlength="6" required  ngModel>
+        </div>
+        <div *ngIf="Password.errors && (Password.touched|| Password.dirty)" class="alert text-danger">
+          <div [hidden]="!Password.errors.required">
+              *Password requried
+            </div>
+            <div [hidden]="!Password.errors.minlength">
+               *Please enter minimum 6 character
+            </div>
+      </div>  
+        <label class="checkbox">
+                <input type="checkbox" value="remember-me"> Remember me
+                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
+            </label>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+      </div>
+    </form>
+    <div class="text-right">
+      <div class="credits">
+          <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
+          -->
+        </div>
+    </div>
+  </div>
+  </div>
+
+

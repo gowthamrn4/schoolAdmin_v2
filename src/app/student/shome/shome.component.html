@@ -1,0 +1,39 @@
+<div class="page-title">
+    <h3>
+        <i class="icon-graduation position-left" style="font-size: 35px"></i>
+        <span class="text-semibold" style="font-size: 27px">Welcome,</span> 
+        <span class="text-warning" style="font-size: 26px"><a routerLink="/studentlanding/sprofile" class="text-warning">{{session.username}} </a></span>
+    </h3>
+    <ul class="breadcrumb position-right">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li class="active">STD 2 - A</li>
+    </ul>
+</div>
+<section class="panel">
+    <header class="panel-heading tab-bg-primary ">
+      <ul class="nav nav-tabs">
+        <li class="">
+          <a data-toggle="tab" href="#home">Home</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#about">About</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#profile">Profile</a>
+        </li>
+        <li class="active">
+          <a data-toggle="tab" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </header>
+    <div class="panel-body">
+      <div class="tab-content">
+        <div id="home" class="tab-pane">
+          Home
+        </div>
+        <div id="about" class="tab-pane">About</div>
+        <div id="profile" class="tab-pane">Profile</div>
+        <div id="contact" class="tab-pane active">Contact</div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,737 @@
+<div class="admission">
+  <div class="panel">
+    <div class="panel-heading">
+      <h4><b>Admission</b></h4>
+    </div>
+    <form #admissionForm="ngForm" #admissionForm="ngForm" (ngSubmit)=addStudents(admissionForm.value) method="#" action="#">
+      <div class="panel-body">
+      <div class="panel-heading">Offical Details</div>
+      <div class="offical-details"><br>
+        <div class="row">
+          <div class="col-md-4">
+              <div class="form-group is-empty">
+                <label>Acadamic Year *</label>
+                  <select class="form-control" name="acadamicYear" #acadamicYear="ngModel" ngModel  required >
+                      <option value="" disabled>Acadamic Year</option>
+                      <option *ngFor="let year of AYear" value="{{year}}">{{year}}</option>
+                  </select>  
+                  <div *ngIf="acadamicYear.errors && (acadamicYear.touched|| acadamicYear.dirty)" class="alert text-danger">
+                        <div [hidden]="!acadamicYear.errors.required">
+                          *acadamicYear requried
+                        </div>
+                        <div [hidden]="!acadamicYear.errors.minlength">
+                           *Please enter minimum 6 character
+                        </div>
+                  </div>                     
+                  <span class="material-input"></span>
+              </div>
+          </div>
+          <div class=" col-md-4 col-4">
+                  <div class="form-group is-empty">
+                    <label>Register Number *</label>
+                      <input type="text" name="registerNo"  class="form-control" #registerNo="ngModel" ngModel placeholder="Register Number"  maxlength="10" required >
+                      <div *ngIf="registerNo.errors && (registerNo.touched|| registerNo.dirty)" class="alert text-danger">
+                          <div [hidden]="!registerNo.errors.required">
+                            *registerNo requried
+                          </div>
+                          <div [hidden]="!registerNo.errors.minlength">
+                             *Please enter minimum 6 character
+                          </div>
+                    </div> 
+                      <span class="material-input"></span>
+                  </div>
+          </div>
+          <div class=" col-md-4 col-4">
+                <label>Joining Date *</label>
+              
+                  <div class="form-group is-empty">
+                    <input type="date" name="joiningDate" #joiningDate="ngModel" ngModel class="form-control" placeholder="Joining Date" required>
+                      <div *ngIf="joiningDate.errors && (joiningDate.touched|| joiningDate.dirty)" class="alert text-danger">
+                          <div [hidden]="!joiningDate.errors.required">
+                            *joiningDate requried
+                          </div>
+                          <div [hidden]="!joiningDate.errors.minlength">
+                             *Please enter minimum 6 character
+                          </div>
+                        </div>
+                      <span class="material-input"></span>
+                  </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class=" col-md-4 col-4">                
+                 <div class="form-group is-empty">
+                   <label>Standard *</label>
+                    <select name="standard" #standard="ngModel" ngModel class="form-control" required>
+                       <option value="" disabled>Standard</option>
+                       <option value="12">12</option>
+                       <option value="11">11</option>
+                       <option value="10">10</option>
+                    </select>
+                    <div *ngIf="standard.errors && (standard.touched|| standard.dirty)" class="alert text-danger">
+                       <div [hidden]="!standard.errors.required">
+                         *standard requried
+                       </div>
+                       <div [hidden]="!standard.errors.minlength">
+                          *Please enter minimum 6 character
+                       </div>
+                     </div>
+                   <span class="material-input"></span>
+                 </div>
+             </div>
+             <div class="col-md-4 col-4">
+                <div class="form-group is-empty">
+                  <label>Class Section *</label>
+                   <select name="classSection" #classSection="ngModel" ngModel class="form-control" required>
+                      <option value="" disabled>Class Section</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                   </select>
+                   <div *ngIf="classSection.errors && (classSection.touched|| classSection.dirty)" class="alert text-danger">
+                      <div [hidden]="!classSection.errors.required">
+                        *classSection requried
+                      </div>
+                      <div [hidden]="!classSection.errors.minlength">
+                         *Please enter minimum 6 character
+                      </div>
+                    </div>
+                  <span class="material-input"></span>
+                </div>
+            </div>
+
+            <div class="form-group col-md-4 col-4">
+                    
+                <div class="form-group is-empty">
+                  <label>Roll Number *</label>
+                   <input type="text" class="form-control" name="rollno" #rollno="ngModel" placeholder="Roll Number" ngModel required>
+                   <div *ngIf="rollno.errors && (rollno.touched|| rollno.dirty)" class="alert text-danger">
+                      <div [hidden]="!rollno.errors.required">
+                        *rollno requried
+                      </div>
+                      <div [hidden]="!rollno.errors.minlength">
+                         *Please enter minimum 6 character
+                      </div>
+                    </div>
+                   <span class="material-input"></span>
+                </div>
+              </div>
+            
+            </div>
+      </div>
+
+      <div class="panel-heading">
+        Personal Details
+      </div><br>
+      <div class="row">
+          <div class=" col-md-4 col-4">
+              <div class="form-group is-empty">
+                <label>First Name *</label>
+                  <input type="text" name="firstName" class="form-control" #firstName="ngModel" ngModel placeholder="First Name"  maxlength="30" required >
+                  <div *ngIf="firstName.errors && (firstName.touched|| firstName.dirty)" class="alert text-danger">
+                      <div [hidden]="!firstName.errors.required">
+                        *firstName requried
+                      </div>
+                      <div [hidden]="!firstName.errors.minlength">
+                         *Please enter minimum 5 character
+                      </div>
+                </div> 
+                  <span class="material-input"></span>
+              </div>        
+         </div>
+         <div class="form-group col-md-4 col-4">
+            <div class="form-group is-empty">
+              <label>Last Name *</label>
+                <input type="text" name="lastName" class="form-control" #lastName="ngModel" ngModel placeholder="Last Name"  maxlength="30" required >
+                <div *ngIf="lastName.errors && (lastName.touched|| lastName.dirty)" class="alert text-danger">
+                    <div [hidden]="!lastName.errors.required">
+                      *lastName requried
+                    </div>
+                    <div [hidden]="!lastName.errors.minlength">
+                       *Please enter minimum 5 character
+                    </div>
+              </div> 
+                <span class="material-input"></span>
+            </div>
+         </div>
+         <div class="form-group col-md-4 col-4">
+            <div class="form-group is-empty">
+              <label>Date Of Birth *</label>
+              <input type="date" name="dob" #dob="ngModel" ngModel class="form-control" placeholder="Date Of Birth" required>
+                <div *ngIf="dob.errors && (dob.touched|| dob.dirty)" class="alert text-danger">
+                    <div [hidden]="!dob.errors.required">
+                      *dob requried
+                    </div>
+                    <div [hidden]="!dob.errors.minlength">
+                       *Please enter  Date of Birth
+                    </div>
+                  </div>
+                <span class="material-input"></span>
+          </div>
+       </div>
+      </div>
+      <div class="row">
+         <div class="col-md-4 col-4">
+          <div class="form-group is-empty">
+            <label>Gender</label>
+             <select name="gender" #gender="ngModel" ngModel class="form-control" required>
+                <option value="" disabled>Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Others</option>
+             </select>
+             <div *ngIf="gender.errors && (gender.touched|| gender.dirty)" class="alert text-danger">
+                <div [hidden]="!gender.errors.required">
+                  *gender requried
+                </div>
+                <div [hidden]="!gender.errors.minlength">
+                   *Please enter Gender
+                </div>
+              </div>
+            <span class="material-input"></span>
+        </div>
+         </div>
+         <div class="form-group col-md-4 col-4">
+            <div class="form-group is-empty">
+              <label>Blood Group *</label>
+               <select name="bloodgroup" #bloodgroup="ngModel" ngModel class="form-control" required>
+                  <option value="" disabled>Blood Group</option>
+                  <option value="A">A</option>
+                  <option value="A+">A+</option>
+                  <option value="O">O</option>
+                  <option value="O+">O+</option>
+                  <option value="AB">AB</option>
+                  <option value="AB-">AB-</option>
+               </select>
+               <div *ngIf="bloodgroup.errors && (bloodgroup.touched|| bloodgroup.dirty)" class="alert text-danger">
+                  <div [hidden]="!bloodgroup.errors.required">
+                    *bloodgroup requried
+                  </div>
+                  <div [hidden]="!bloodgroup.errors.minlength">
+                     *Please enter bloodgroup
+                  </div>
+                </div>
+              <span class="material-input"></span>
+            </div>
+        </div>
+        
+        <div class="form-group col-md-4 col-4">
+            <div class="form-group is-empty">
+              <label>Nationality</label>
+               <select name="nationality" #nationality="ngModel" ngModel class="form-control" required>
+                  <option value="" disabled>Nationality</option>
+                  <option value="india">India</option>
+                  <option value="srilanka">SriLanka</option>
+                  <option value="pakistan">Pakistan</option>
+                  <option value="bangaladesh">Bangaladesh</option>
+                  <option value="malasiya">Malasiya</option>
+                  <option value="singapore">Singapore</option>
+               </select>
+               <div *ngIf="nationality.errors && (nationality.touched|| nationality.dirty)" class="alert text-danger">
+                  <div [hidden]="!nationality.errors.required">
+                    *nationality requried
+                  </div>
+                  <div [hidden]="!nationality.errors.minlength">
+                     *Please enter nationality
+                  </div>
+                </div>
+              <span class="material-input"></span>
+          </div>
+        </div>
+        <div class="form-group col-md-4 col-4">
+            <div class="form-group is-empty">
+              <label>Mother Tongue *</label>
+               <select name="motherTongue" #motherTongue="ngModel" ngModel class="form-control" required>
+                  <option value="" disabled>Mother Tongue</option>
+                  <option value="tamil">Tamil</option>
+                  <option value="telugu">Telugu</option>
+                  <option value="kannda">Kannda</option>
+                  <option value="malayalam">Malayalam</option>
+                  <option value="hindi">hindi</option>
+                  <option value="bengali">Bengali</option>
+                  <option value="english">English</option>
+                  <option value="punjabi">Punjabi</option>
+               </select>
+               <div *ngIf="motherTongue.errors && (motherTongue.touched|| motherTongue.dirty)" class="alert text-danger">
+                  <div [hidden]="!motherTongue.errors.required">
+                    *motherTongue requried
+                  </div>
+                  <div [hidden]="!motherTongue.errors.minlength">
+                     *Please enter motherTongue
+                  </div>
+                </div>
+              <span class="material-input"></span>
+            </div>
+        </div>
+        <div class="form-group col-md-4 col-4">
+            <div class="form-group is-empty">
+              <label>Religion</label>
+               <select name="religion" #religion="ngModel" ngModel class="form-control" required>
+                  <option value="" disabled>Religion</option>
+                  <option value="hinduism">Hinduism</option>
+                  <option value="islam">Islam</option>
+                  <option value="christianity">Christianity</option>
+                  <option value="jainism">Jainism</option>
+                  <option value="buddhism">Buddhism</option>
+                  <option value="judaism">Judaism</option>
+               </select>
+               <div *ngIf="religion.errors && (religion.touched|| religion.dirty)" class="alert text-danger">
+                  <div [hidden]="!religion.errors.required">
+                    *religion requried
+                  </div>
+                  <div [hidden]="!religion.errors.minlength">
+                     *Please enter religion
+                  </div>
+                </div>
+              <span class="material-input"></span>
+            </div>
+        </div>
+        <div class="form-group col-md-4 col-4">
+                                     
+            <div class="form-group is-empty">
+              <label>Caste *</label>
+               <select name="caste" #caste="ngModel" ngModel class="form-control" required>
+                  <option value="" disabled>Caste</option>
+                  <option value="bc">BC</option>
+                  <option value="mbc">MBC</option>
+                  <option value="oc">OC</option>
+                  <option value="sc">SC</option>
+               </select>
+               <div *ngIf="caste.errors && (caste.touched|| caste.dirty)" class="alert text-danger">
+                  <div [hidden]="!caste.errors.required">
+                    *caste requried
+                  </div>
+                  <div [hidden]="!caste.errors.minlength">
+                     *Please enter caste
+                  </div>
+                </div>
+              <span class="material-input"></span>
+            </div>
+        </div>
+        <div class="form-group col-md-4 col-4">
+            <div class="form-group is-empty">
+              <label>Aaadhar Number *</label>
+              <input type="text" name="aaadharNumber" #aaadharNumber="ngModel" ngModel class="form-control" placeholder="AaadharNumber" required>
+                <div *ngIf="aaadharNumber.errors && (aaadharNumber.touched|| aaadharNumber.dirty)" class="alert text-danger">
+                    <div [hidden]="!aaadharNumber.errors.required">
+                      *aaadharNumber requried
+                    </div>
+                    <div [hidden]="!aaadharNumber.errors.minlength">
+                       *Please enter  aaadharNumber
+                    </div>
+                  </div>
+                <span class="material-input"></span>
+            </div>
+    </div>
+      </div>
+      <div class="panel-heading">
+          Contact Details
+      </div><br>
+      <div class="row">
+                        
+          <div class="form-group col-md-6 col-6">
+                  <div class="form-group is-empty">
+                    <label>Permanent Address *</label>
+                    <textarea  name="permanentAddress" #permanentAddress="ngModel" ngModel class="form-control" placeholder="Permanent Address" required></textarea>
+                      <div *ngIf="permanentAddress.errors && (permanentAddress.touched|| permanentAddress.dirty)" class="alert text-danger">
+                          <div [hidden]="!permanentAddress.errors.required">
+                            *PermanentAddress requried
+                          </div>
+                          <div [hidden]="!permanentAddress.errors.minlength">
+                             *Please enter  PermanentAddress
+                          </div>
+                        </div>
+                      <span class="material-input"></span>
+                  </div>
+          </div>
+          <div class="form-group col-md-6 col-6">
+                              
+              <div class="form-group is-empty">
+                <label>Present Address *</label>
+                <textarea  name="presentAddress" #presentAddress="ngModel" ngModel class="form-control" placeholder="Present Address" required></textarea>
+                  <div *ngIf="presentAddress.errors && (presentAddress.touched|| presentAddress.dirty)" class="alert text-danger">
+                      <div [hidden]="!presentAddress.errors.required">
+                        *presentAddress requried
+                      </div>
+                      <div [hidden]="!presentAddress.errors.minlength">
+                         *Please enter  presentAddress
+                      </div>
+                    </div>
+                  <span class="material-input"></span>
+              </div>
+            
+      </div>
+      <div class="form-group col-md-4 col-4">
+                              
+          <div class="form-group is-empty">
+            <label>City *</label>
+              <input type="text" name="cityName" class="form-control" #cityName="ngModel" ngModel placeholder="City"  maxlength="30" required >
+              <div *ngIf="cityName.errors && (cityName.touched|| cityName.dirty)" class="alert text-danger">
+                  <div [hidden]="!cityName.errors.required">
+                    *cityName requried
+                  </div>
+                  <div [hidden]="!cityName.errors.minlength">
+                     *Please enter cityName
+                  </div>
+            </div> 
+              <span class="material-input"></span>
+        </div>
+  </div>
+  <div class="form-group col-md-4 col-4">
+                             
+      <div class="form-group is-empty">
+        <label>Pin Number *</label>
+          <input type="text" name="pinNumber" class="form-control" #pinNumber="ngModel" ngModel placeholder="pinNumber"  maxlength="6" required >
+          <div *ngIf="pinNumber.errors && (pinNumber.touched|| pinNumber.dirty)" class="alert text-danger">
+              <div [hidden]="!pinNumber.errors.required">
+                *pinNumber requried
+              </div>
+              <div [hidden]="!pinNumber.errors.minlength">
+                 *Please enter pinNumber
+              </div>
+        </div> 
+          <span class="material-input"></span>
+    </div>
+</div>
+<div class="form-group col-md-4 col-4">
+                             
+    <div class="form-group is-empty">
+      <label>Country *</label>
+       <select name="country" #country="ngModel" ngModel class="form-control" required>
+          <option value="" disabled>Country</option>
+          <option value="india">India</option>
+          <option value="srilanka">SriLanka</option>
+          <option value="pakistan">Pakistan</option>
+          <option value="bangaladesh">Bangaladesh</option>
+          <option value="malasiya">Malasiya</option>
+          <option value="singapore">Singapore</option>
+       </select>
+       <div *ngIf="country.errors && (country.touched|| country.dirty)" class="alert text-danger">
+          <div [hidden]="!country.errors.required">
+            *country requried
+          </div>
+          <div [hidden]="!country.errors.minlength">
+             *Please enter country
+          </div>
+        </div>
+      <span class="material-input"></span>
+    </div>
+ 
+</div>
+<div class="form-group col-md-4 col-4">
+                                  
+    <div class="form-group is-empty">
+      <label>State *</label>
+       <select name="state" #state="ngModel" ngModel class="form-control" required>
+          <option value="" disabled>State</option>
+          <option *ngFor='let state of States' value="{{state}}">{{state}}</option>
+       </select>
+       <div *ngIf="state.errors && (state.touched|| state.dirty)" class="alert text-danger">
+          <div [hidden]="!state.errors.required">
+            *state requried
+          </div>
+          <div [hidden]="!state.errors.minlength">
+             *Please enter state
+          </div>
+        </div>
+      <span class="material-input"></span>
+    </div>
+  
+</div>
+<div class="form-group col-md-4 col-4">
+                                     
+    <div class="form-group is-empty">
+      <label>Phone Number *</label>
+        <input type="text" name="phone" class="form-control" #phone="ngModel" ngModel placeholder="Phone Number"  maxlength="10" required >
+        <div *ngIf="phone.errors && (phone.touched|| phone.dirty)" class="alert text-danger">
+            <div [hidden]="!phone.errors.required">
+              *phone requried
+            </div>
+            <div [hidden]="!phone.errors.minlength">
+               *Please enter phone
+            </div>
+      </div> 
+        <span class="material-input"></span>
+    </div>
+  
+</div>
+<div class="form-group col-md-4 col-4">
+                                      
+    <div class="form-group is-empty">
+      <label>Mobile Number *</label>
+        <input type="text" name="mobileNumber" class="form-control" #mobileNumber="ngModel" ngModel placeholder="Mobile Number"  maxlength="10" required >
+        <div *ngIf="mobileNumber.errors && (mobileNumber.touched|| mobileNumber.dirty)" class="alert text-danger">
+            <div [hidden]="!mobileNumber.errors.required">
+              *mobileNumber requried
+            </div>
+            <div [hidden]="!mobileNumber.errors.minlength">
+               *Please enter mobileNumber
+            </div>
+      </div> 
+        <span class="material-input"></span>
+    </div>
+ 
+</div>
+        </div>
+        <div class="panel-heading">
+          Father Details
+        </div><br>
+        <div class="row">
+            <div class="form-group col-md-4 col-4">
+                                  
+                <div class="form-group is-empty">
+                  <label>Father Name *</label>
+                    <input type="text" name="farherName" class="form-control" #farherName="ngModel" ngModel placeholder="Father Name"  maxlength="20" required >
+                    <div *ngIf="farherName.errors && (farherName.touched|| farherName.dirty)" class="alert text-danger">
+                        <div [hidden]="!farherName.errors.required">
+                          *farherName requried
+                        </div>
+                        <div [hidden]="!farherName.errors.minlength">
+                           *Please enter farherName
+                        </div>
+                  </div> 
+                    <span class="material-input"></span>
+               
+              </div>
+        </div>
+        <div class="form-group col-md-4 col-4">
+                                  
+            <div class="form-group is-empty">
+              <label>Mobile Number *</label>
+                <input type="text" name="fmobileNumber" class="form-control" #fmobileNumber="ngModel" ngModel placeholder="Mobile Number"  maxlength="10" required >
+                <div *ngIf="fmobileNumber.errors && (fmobileNumber.touched|| fmobileNumber.dirty)" class="alert text-danger">
+                    <div [hidden]="!fmobileNumber.errors.required">
+                      *fmobileNumber requried
+                    </div>
+                    <div [hidden]="!fmobileNumber.errors.minlength">
+                       *Please enter fmobileNumber
+                    </div>
+              </div> 
+                <span class="material-input"></span>
+            
+          </div>
+    </div>
+    <div class="form-group col-md-4 col-4">
+                                 
+        <div class="form-group is-empty">
+          <label>Aaadhar Number *</label>
+            <input type="text" name="faadharNumber" class="form-control" #faadharNumber="ngModel" ngModel placeholder="AaadharNumber"  maxlength="10" required >
+            <div *ngIf="faadharNumber.errors && (faadharNumber.touched|| faadharNumber.dirty)" class="alert text-danger">
+                <div [hidden]="!faadharNumber.errors.required">
+                  *faadharNumber requried
+                </div>
+                <div [hidden]="!faadharNumber.errors.minlength">
+                   *Please enter faadharNumber
+                </div>
+          </div> 
+            <span class="material-input"></span>
+        </div>
+     
+</div>
+<div class="form-group col-md-4 col-4">
+                                  
+    <div class="form-group is-empty">
+      <label>Job *</label>
+        <input type="text" name="fjob" class="form-control" #fjob="ngModel" ngModel placeholder="Job"  maxlength="10" required >
+        <div *ngIf="fjob.errors && (fjob.touched|| fjob.dirty)" class="alert text-danger">
+            <div [hidden]="!fjob.errors.required">
+              *Job requried
+            </div>
+            <div [hidden]="!fjob.errors.minlength">
+               *Please enter Father Job
+            </div>
+      </div> 
+        <span class="material-input"></span>
+    </div>
+</div>
+        </div>
+        <div class="panel-heading">
+          Mother Details
+        </div><br>
+        <div class="row">
+            <div class="form-group col-md-4 col-4">
+                               
+                <div class="form-group is-empty">
+                  <label>Mother Name</label>
+                    <input type="text" name="motherName" class="form-control" #motherName="ngModel" ngModel placeholder="Mother Name"  maxlength="20" required >
+                    <div *ngIf="motherName.errors && (motherName.touched|| motherName.dirty)" class="alert text-danger">
+                        <div [hidden]="!motherName.errors.required">
+                          *motherName requried
+                        </div>
+                        <div [hidden]="!motherName.errors.minlength">
+                           *Please enter motherName
+                        </div>
+                  </div> 
+                    <span class="material-input"></span>
+                </div>
+        </div>
+        <div class="form-group col-md-4 col-4">
+                               
+            <div class="form-group is-empty">
+              <label>Mobile Number *</label>
+                <input type="text" name="mmobileNumber" class="form-control" #mmobileNumber="ngModel" ngModel placeholder="Mobile Number"  maxlength="10" required >
+                <div *ngIf="mmobileNumber.errors && (mmobileNumber.touched|| mmobileNumber.dirty)" class="alert text-danger">
+                    <div [hidden]="!mmobileNumber.errors.required">
+                      *mobileNumber requried
+                    </div>
+                    <div [hidden]="!mobileNumber.errors.minlength">
+                       *Please enter mobileNumber
+                    </div>
+              </div> 
+                <span class="material-input"></span>
+          </div>
+    </div>
+    <div class="form-group col-md-4 col-4">
+                               
+        <div class="form-group is-empty">
+          <label>Aaadhar Number *</label>
+            <input type="text" name="maadharNumber" class="form-control" #maadharNumber="ngModel" ngModel placeholder="AaadharNumber"  maxlength="10" required >
+            <div *ngIf="maadharNumber.errors && (maadharNumber.touched|| maadharNumber.dirty)" class="alert text-danger">
+                <div [hidden]="!maadharNumber.errors.required">
+                  *aadharNumber requried
+                </div>
+                <div [hidden]="!maadharNumber.errors.minlength">
+                   *Please enter aadharNumber
+                </div>
+          </div> 
+            <span class="material-input"></span>
+      </div>
+</div>
+<div class="form-group col-md-4 col-4">
+                               
+    <div class="form-group is-empty">
+      <label>Job *</label>
+        <input type="text" name="mjob" class="form-control" #mjob="ngModel" ngModel placeholder="Job"  maxlength="10" required >
+        <div *ngIf="mjob.errors && (mjob.touched|| mjob.dirty)" class="alert text-danger">
+            <div [hidden]="!mjob.errors.required">
+              *Job requried
+            </div>
+            <div [hidden]="!mjob.errors.minlength">
+               *Please enter Mother Job
+            </div>
+      </div> 
+        <span class="material-input"></span>
+  </div>
+</div>
+        </div>
+
+        <div class="panel-heading">
+          Other Details
+        </div><br>
+        <div class="row">
+            <div class="col-sm-3">  
+                <label>
+                    <input type="checkbox" name="optionsCheckboxe" #optionsCheckboxe="ngModel" ngModel (click)="showTransportForm(optionsCheckboxe.value)" value="1"><span class="checkbox-material"><span class="check"></span></span>
+                   Transport <i class="fa fa-bus" aria-hidden="true"></i>
+                  </label>
+            </div>
+            <div class="col-md-3">
+                <label>
+                    <input type="checkbox" name="optionsCheckboxe" #optionsCheckboxe="ngModel" ngModel (click)="showHostelForm(optionsCheckboxe.value)" value="1"><span class="checkbox-material"><span class="check"></span></span>
+                  Hostel  <i class="fa fa-building" aria-hidden="true"></i>
+                  </label>
+           </div>
+        </div><br>
+        <div class="hostel" [hidden]="hostel==true">
+            <div class="row">
+                  <div class="form-group col-md-2 col-2">
+                     
+                          <div class="form-group is-empty">
+                            <label>Hostel Name *</label>
+                             <select name="hostelName" #hostelName="ngModel" ngModel class="form-control" required>
+                                <option value="" disabled>Hostel Name</option>
+                                <option value="hostel1">Hostel 1</option>
+                                <option value="hostel2">Hostel 2</option>
+                                <option value="hostel3">Hostel 3</option>
+                             </select>                                 
+                            <span class="material-input"></span>
+                          </div>
+                  </div>
+
+              <div class="form-group col-md-2 col-2">
+                  
+                      <div class="form-group is-empty">
+                        <label>Room *</label>
+                         <select name="hroom" #hroom="ngModel" ngModel class="form-control" required>
+                            <option value="" disabled>Select Room</option>
+                            <option value="B4">B4</option>
+                            <option value="B3">B3</option>
+                            <option value="B2">B3</option>
+                         </select>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4 col-4">
+                        <label>Register Date</label>
+                         
+                          <div class="form-group is-empty">
+                            <input type="date" name="registerDate" #registerDate="ngModel" ngModel class="form-control" placeholder="Joining Date" required>
+                              
+                              <span class="material-input"></span>
+                        </div>
+                  </div>
+
+                  <div class="form-group col-md-4 col-4">
+                          <label>Vacating Date</label>
+                           
+                            <div class="form-group is-empty">
+                              <input type="date" name="vacatingDate" #vacatingDate="ngModel" ngModel class="form-control" placeholder="Joining Date" required>
+                                
+                                <span class="material-input"></span>
+                          </div>
+                    </div>
+            </div>
+          </div>
+          <div class="transport" [hidden]="transport==true">
+              <div class="row">
+                    <div class="form-group col-md-2 col-2">
+                            <label>Route *</label>
+                            <div class="form-group is-empty">
+                                <input type="text" name="route" class="form-control" #route="ngModel" ngModel placeholder="Route"  maxlength="10" required >
+                                <span class="material-input"></span>
+                            </div>
+                    </div>
+
+                    <div class="form-group col-md-2 col-2">
+                            <label>Destination *</label>
+                            <div class="form-group is-empty">
+                                <input type="text" name="destination" class="form-control" #destination="ngModel" ngModel placeholder="Destination"  maxlength="10" required >
+                                <span class="material-input"></span>
+                          </div>
+                    </div>
+
+                    <div class="form-group col-md-4 col-4">
+                              <label>Start Date *</label>
+                              <div class="form-group is-empty">
+                                <input type="date" name="startDate" #startDate="ngModel" ngModel class="form-control" placeholder="Start Date" required>
+                                  <span class="material-input"></span>
+                            </div>
+                      </div>
+
+                      <div class="form-group col-md-4 col-4">
+                              <label>End Date</label>
+                                
+                                <div class="form-group is-empty">
+                                  <input type="date" name="endDate" #endDate="ngModel" ngModel class="form-control" placeholder="End Date" required>
+                                    <span class="material-input"></span>
+                              </div>
+                        </div>
+              </div>
+            </div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-5">
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary btn text-center" >Add</button>
+          </div>
+          <div class="col-md-5">
+          </div>
+      </div>
+      <br>
+    </form>
+  </div>
+</div>
