@@ -3,7 +3,8 @@ import {ShareService} from '../../service/share.service';
 import {Http} from '@angular/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
+declare var $:any;
+declare var jQuery:any;
 
 @Component({
   selector: 'app-adminlanding',
@@ -26,11 +27,26 @@ export class AdminlandingComponent implements OnInit {
     //  console.log(res);
     var name = JSON.parse(localStorage.getItem("userdetails"));
     this.session.username = name.user.username;
-    console.log(this.session.username) 
+    console.log(this.session.username) ;
+
+    /*  show msg */
+    $.toast({
+      heading: 'Welcome'+"_" +this.session.username,
+      showHideTransition: 'slide',
+      position: 'bottom-right',
+      icon: 'success'
+       });
+    /* end show msg */
     }
     logout(){
       localStorage.removeItem('currentUser');
-      localStorage.removeItem('userdetails')
+      localStorage.removeItem('userdetails');
+      $.toast({
+        heading: 'Bye'+"_" +this.session.username,
+        showHideTransition: 'slide',
+        position: 'top-center',
+        icon: 'success'
+         });
       this.router.navigate(['/login'])
     
       }

@@ -1,5 +1,7 @@
 import { Component, OnInit,ViewChild} from '@angular/core';
 import { DataService } from '../../service/data.service';
+declare var $:any;
+declare var jQuery:any;
 
 @Component({
   selector: 'app-addusers',
@@ -15,6 +17,8 @@ export class AddusersComponent implements OnInit {
   delete:any;
   role1='admin';
   findStudent:any;
+
+   
   constructor(private dataservice:DataService) { }
 
   ngOnInit() {
@@ -50,6 +54,12 @@ export class AddusersComponent implements OnInit {
       }
       this.dataservice.finduserservice(data).subscribe(res=>{
       this.getAllUser =res;
+        $.toast({
+        heading: value,
+        showHideTransition: 'slide',
+        position: 'bottom-left',
+        icon: 'success'
+         });
       // this.spinner.hide();
 
       })
@@ -85,6 +95,7 @@ export class AddusersComponent implements OnInit {
    }
    this.dataservice.findStudentservice(data).subscribe(res=>{
    this.findStudent=res;
+  
    })
   }
   /* end send data for find students */

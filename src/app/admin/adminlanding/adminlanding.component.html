@@ -207,9 +207,9 @@
       
       <!-- sidebar menu start-->
       <ul class="sidebar-menu">
-          <div class="profile text-center">
+          <div class="profile text-center"><br>
               <div class="img">
-                <img src="../../../assets/img/school/user.png" width="100">
+                <img src="../../../assets/img/school/admin.png" width="100" class="img-circle">
               </div>
              <h4 style="color:white">{{session.username}}</h4>
             </div><hr>
@@ -226,7 +226,7 @@
                         <span class="menu-arrow arrow_carrot-right"></span>
                     </a>
           <ul class="sub">
-            <li><a class="" href="form_component.html">Class And Standard</a></li>
+            <li><a class="" routerLink="/admin/acadamic_class">Class And Standard</a></li>
             <li><a class="" href="form_validation.html">Exams</a></li>
             <li><a class="" href="form_validation.html">Time Table</a></li>
 
@@ -240,7 +240,7 @@
                     </a>
           <ul class="sub">
             <li><a class="" routerLink="/admin/admission">Admission</a></li>
-            <li><a class="" href="buttons.html">Students List</a></li>
+            <li><a class="" routerLink="/admin/studentList">Students List</a></li>
           </ul>
         </li>
         

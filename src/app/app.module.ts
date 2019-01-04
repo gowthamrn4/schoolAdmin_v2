@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import {HttpModule} from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { NgxSpinnerModule } from '@hardpool/ngx-spinner';
 
 import { DataService } from './service/data.service';
 import { ShareService } from './service/share.service';
@@ -15,6 +16,9 @@ import { AdminlandingComponent } from './admin/adminlanding/adminlanding.compone
 import { AddusersComponent } from './admin/addusers/addusers.component';
 import { AdmissionComponent } from './admin/admission/admission.component';
 import { HomeComponent } from './admin/home/home.component';
+import { StudentListComponent } from './admin/student-list/student-list.component';
+import { AcadamicClassComponent } from './admin/acadamic/acadamic-class/acadamic-class.component';
+
 /* end admin page component */
 
 /* student user component */
@@ -23,6 +27,7 @@ import { ShomeComponent } from './student/shome/shome.component';
 import { ProfileComponent } from './student/profile/profile.component';
 
 /* end student user component */
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,11 +38,14 @@ import { ProfileComponent } from './student/profile/profile.component';
     HomeComponent,
     StudentlandingComponent,
     ShomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    StudentListComponent,
+    AcadamicClassComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    NgxSpinnerModule,
     FormsModule, ReactiveFormsModule,
     BrowserModule,
     RouterModule.forRoot([
@@ -48,7 +56,9 @@ import { ProfileComponent } from './student/profile/profile.component';
         { path:'home',component:HomeComponent },
         { path:'',pathMatch:'full',redirectTo:'home'},
         { path:'addusers',component:AddusersComponent },
-        { path:'admission',component:AdmissionComponent }
+        { path:'admission',component:AdmissionComponent },
+        { path:'studentList',component:StudentListComponent },
+        { path:'acadamic_class',component:AcadamicClassComponent }
       ]},
       { path:'studentlanding',component:StudentlandingComponent,
     children:[

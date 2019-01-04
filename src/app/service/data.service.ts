@@ -17,7 +17,10 @@ export class DataService {
     deleteClass:any; /* delete class */
     addmissionStudent:any; /* admission student data */
     findstd:any; /* find student by std */
+    findstd1:any;
     updatepersonaldata:any; /* update personal data */
+    deleteStudent:any /* delete student */
+    checkadmission:any; /* check admission avalible seats */
     // baseURL='https://schooladminwebapp.herokuapp.com'
     baseURL='http://localhost:3000'
 
@@ -133,6 +136,21 @@ export class DataService {
    }
    /* end add students */
    
+   /*  delete Students */
+   deleteStudentsservice(value){
+    const stoken = localStorage.getItem('currentUser');
+    const ptoken = JSON.parse(stoken);
+    const token = ptoken.token;
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'x-access-token': token
+    });
+     const options = new RequestOptions({ headers: headers });
+     return this.http.post(this.baseURL+'/student/deleteStudents',value,options)
+     .map(result=>this.deleteStudent=result.json())
+   }
+   /* end delete students */
+
    /* find student By standard */
    findStudentservice(value){
     const stoken = localStorage.getItem('currentUser');
@@ -170,4 +188,49 @@ export class DataService {
     .map(result=>this.updatepersonaldata=result.json())
    }
    /* end update personal details */
+
+   /* update contact details */
+   updatecontact(value){
+    const stoken = localStorage.getItem('currentUser');
+    const ptoken = JSON.parse(stoken);
+    const token = ptoken.token;
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'x-access-token': token
+    });
+     const options = new RequestOptions({ headers: headers });
+     return this.http.post(this.baseURL+'/student/updateContactDetails',value,options)
+     .map(result=>this.findstd=result.json())
+   }
+   /* end update contact details */
+
+   /* update parents details */
+   updateParentsDetails(value){
+    const stoken = localStorage.getItem('currentUser');
+    const ptoken = JSON.parse(stoken);
+    const token = ptoken.token;
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'x-access-token': token
+    });
+     const options = new RequestOptions({ headers: headers });
+     return this.http.post(this.baseURL+'/student/updateParents',value,options)
+     .map(result=>this.findstd=result.json())
+   }
+   /* end update parents details */
+
+  /* check admission. avaliable seats */
+  checkAdmisionservice(value){
+    const stoken = localStorage.getItem('currentUser');
+    const ptoken = JSON.parse(stoken);
+    const token = ptoken.token;
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'x-access-token': token
+    });
+     const options = new RequestOptions({ headers: headers });
+     return this.http.post(this.baseURL+'/student/checkadmissionseats',value,options)
+     .map(result=>this.checkadmission=result.json())
+  }
+  /* end check admission avalaible seats */
 }

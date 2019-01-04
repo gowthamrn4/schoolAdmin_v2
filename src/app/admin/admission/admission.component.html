@@ -26,81 +26,82 @@
                   <span class="material-input"></span>
               </div>
           </div>
-          <div class=" col-md-4 col-4">
-                  <div class="form-group is-empty">
-                    <label>Register Number *</label>
-                      <input type="text" name="registerNo"  class="form-control" #registerNo="ngModel" ngModel placeholder="Register Number"  maxlength="10" required >
-                      <div *ngIf="registerNo.errors && (registerNo.touched|| registerNo.dirty)" class="alert text-danger">
-                          <div [hidden]="!registerNo.errors.required">
-                            *registerNo requried
-                          </div>
-                          <div [hidden]="!registerNo.errors.minlength">
-                             *Please enter minimum 6 character
-                          </div>
-                    </div> 
-                      <span class="material-input"></span>
+          <div class=" col-md-4 col-4">                
+              <div class="form-group is-empty">
+                <label>Standard *</label>
+                 <select name="standard" #standard="ngModel" (change)=checkAdmission(admissionForm.value) ngModel class="form-control" required>
+                    <option value="" disabled>Standard</option>
+                    <option value="12">12</option>
+                    <option value="11">11</option>
+                    <option value="10">10</option>
+                 </select>
+                 <div *ngIf="standard.errors && (standard.touched|| standard.dirty)" class="alert text-danger">
+                    <div [hidden]="!standard.errors.required">
+                      *standard requried
+                    </div>
+                    <div [hidden]="!standard.errors.minlength">
+                       *Please enter minimum 6 character
+                    </div>
                   </div>
+                <span class="material-input"></span>
+              </div>
           </div>
-          <div class=" col-md-4 col-4">
-                <label>Joining Date *</label>
-              
-                  <div class="form-group is-empty">
-                    <input type="date" name="joiningDate" #joiningDate="ngModel" ngModel class="form-control" placeholder="Joining Date" required>
-                      <div *ngIf="joiningDate.errors && (joiningDate.touched|| joiningDate.dirty)" class="alert text-danger">
-                          <div [hidden]="!joiningDate.errors.required">
-                            *joiningDate requried
-                          </div>
-                          <div [hidden]="!joiningDate.errors.minlength">
-                             *Please enter minimum 6 character
-                          </div>
-                        </div>
-                      <span class="material-input"></span>
-                  </div>
-          </div>
+          <div class="col-md-4 col-4">
+             <div class="form-group is-empty">
+               <label>Class Section *</label>
+                <select name="classSection" #classSection="ngModel" ngModel class="form-control" required>
+                   <option value="" disabled>Class Section</option>
+                   <option value="A">A</option>
+                   <option value="B">B</option>
+                   <option value="C">C</option>
+                   <option value="D">D</option>
+                   <option value="E">E</option>
+                </select>
+                <div *ngIf="classSection.errors && (classSection.touched|| classSection.dirty)" class="alert text-danger">
+                   <div [hidden]="!classSection.errors.required">
+                     *classSection requried
+                   </div>
+                   <div [hidden]="!classSection.errors.minlength">
+                      *Please enter minimum 6 character
+                   </div>
+                 </div>
+               <span class="material-input"></span>
+             </div>
+         </div>
+          
         </div>
         <div class="row">
-            <div class=" col-md-4 col-4">                
-                 <div class="form-group is-empty">
-                   <label>Standard *</label>
-                    <select name="standard" #standard="ngModel" ngModel class="form-control" required>
-                       <option value="" disabled>Standard</option>
-                       <option value="12">12</option>
-                       <option value="11">11</option>
-                       <option value="10">10</option>
-                    </select>
-                    <div *ngIf="standard.errors && (standard.touched|| standard.dirty)" class="alert text-danger">
-                       <div [hidden]="!standard.errors.required">
-                         *standard requried
-                       </div>
-                       <div [hidden]="!standard.errors.minlength">
-                          *Please enter minimum 6 character
-                       </div>
-                     </div>
-                   <span class="material-input"></span>
-                 </div>
-             </div>
-             <div class="col-md-4 col-4">
+            <div class=" col-md-4 col-4">
                 <div class="form-group is-empty">
-                  <label>Class Section *</label>
-                   <select name="classSection" #classSection="ngModel" ngModel class="form-control" required>
-                      <option value="" disabled>Class Section</option>
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="C">C</option>
-                      <option value="D">D</option>
-                      <option value="E">E</option>
-                   </select>
-                   <div *ngIf="classSection.errors && (classSection.touched|| classSection.dirty)" class="alert text-danger">
-                      <div [hidden]="!classSection.errors.required">
-                        *classSection requried
-                      </div>
-                      <div [hidden]="!classSection.errors.minlength">
-                         *Please enter minimum 6 character
-                      </div>
-                    </div>
-                  <span class="material-input"></span>
+                  <label>Register Number *</label>
+                    <input type="text" name="registerNo"  class="form-control" #registerNo="ngModel" ngModel placeholder="Register Number"  maxlength="10" required >
+                    <div *ngIf="registerNo.errors && (registerNo.touched|| registerNo.dirty)" class="alert text-danger">
+                        <div [hidden]="!registerNo.errors.required">
+                          *registerNo requried
+                        </div>
+                        <div [hidden]="!registerNo.errors.minlength">
+                           *Please enter minimum 6 character
+                        </div>
+                  </div> 
+                    <span class="material-input"></span>
                 </div>
-            </div>
+        </div>
+        <div class=" col-md-4 col-4">
+              <label>Joining Date *</label>
+            
+                <div class="form-group is-empty">
+                  <input type="date" name="joiningDate" #joiningDate="ngModel" ngModel class="form-control" placeholder="Joining Date" required>
+                    <div *ngIf="joiningDate.errors && (joiningDate.touched|| joiningDate.dirty)" class="alert text-danger">
+                        <div [hidden]="!joiningDate.errors.required">
+                          *joiningDate requried
+                        </div>
+                        <div [hidden]="!joiningDate.errors.minlength">
+                           *Please enter minimum 6 character
+                        </div>
+                      </div>
+                    <span class="material-input"></span>
+                </div>
+        </div>
 
             <div class="form-group col-md-4 col-4">
                     

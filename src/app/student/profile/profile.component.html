@@ -65,7 +65,8 @@
                                <option value="jainism">Jainism</option>
                                <option value="buddhism">Buddhism</option>
                                <option value="judaism">Judaism</option>
-                            </select>                        </div>
+                            </select>                        
+                          </div>
                       </div><br>
                       <div class="row">
                         <div class="col-md-4">
@@ -111,12 +112,110 @@
                             <input type="text" name="aaadharNumber" #aaadharNumber="ngModel" [(ngModel)]="personalDetails.aaadharNumber" ngModel class="form-control" placeholder="AaadharNumber" required>
                         </div>
                       </div><br>
-                      <button class="btn btn">Save</button>
+                      <button class="btn btn" >Save</button>
                     </form>
                   </div>
               </div>
-              <div id="about" class="tab-pane">About</div>
-              <div id="profile" class="tab-pane">Profile</div>
+              <div id="about" class="tab-pane">
+                   <div class="contact_details"><br>
+                    <form #contact="ngForm" #contact="ngForm" (ngSubmit)=updateContactDetails(contact.value) method="#" action="#">
+                     <div class="row">
+                       <div class="col-md-6">
+                         <label>Permanent Address *</label>
+                         <textarea class="form-control" name="permanentAddress" [(ngModel)]="contactDetails.permanentAddress" #permanentAddress="ngModel" ngModel></textarea>
+                       </div>
+                       <div class="col-md-6">
+                        <label>Present Address *</label>
+                        <textarea class="form-control" name="presentAddress" [(ngModel)]="contactDetails.presentAddress" #presentAddress="ngModel" ngModel></textarea>
+                      </div>
+                     </div><br>
+                     <div class="row">
+                       <div class="col-md-4">
+                         <label>City *</label>
+                         <input type="text" class="form-control" name="city" #city="ngModel" [(ngModel)]="contactDetails.city" ngModel>
+                       </div>
+                       <div class="col-md-4">
+                        <label>State *</label>
+                        <input type="text" class="form-control" name="state" #state="ngModel" [(ngModel)]="contactDetails.state" ngModel>
+                      </div>
+                      <div class="col-md-4">
+                        <label>Country *</label>
+                        <input type="text" class="form-control" name="country" #country="ngModel" [(ngModel)]="contactDetails.country" ngModel>
+                      </div>
+                     </div><br>
+                     <div class="row">
+                       <div class="col-md-4">
+                        <label>Mobile Number *</label>
+                        <input type="text" class="form-control" name="mobileNumber" #mobileNumber="ngModel" [(ngModel)]="contactDetails.mobileNumber" ngModel>
+                       </div>
+                       <div class="col-md-4">
+                        <label>Phone Number *</label>
+                        <input type="text" class="form-control" name="phoneNumber" #phoneNumber="ngModel" [(ngModel)]="contactDetails.phoneNumber" ngModel>
+                       </div>
+                       <div class="col-md-4">
+                        <label>Pin Code *</label>
+                        <input type="text" class="form-control" name="pinCode" #pinCode="ngModel" [(ngModel)]="contactDetails.pinCode" ngModel>
+                       </div>
+                     </div><br>
+                     <button  class="btn btn-md">Save</button>
+                     </form>
+                   </div>
+                 
+
+                  </div>
+              <div id="profile" class="tab-pane"><br>
+                <form #parentDetails="ngForm" #parentDetails="ngForm" (ngSubmit)=updateparentDetails(parentDetails.value) method="#" action="#">
+                <label>Father Details</label>
+                <br><br>
+                <div class="father_details">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label>Father Name *</label>
+                      <input type="text" name="fatherName" [(ngModel)]="ParentsDetails.fatherName" #fatherName="ngModel" ngModel class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                      <label>job *</label>
+                      <input type="text" name="fjob" #fjob="ngModel" [(ngModel)]="ParentsDetails.fjob" ngModel class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                      <label>Mobile Number *</label>
+                      <input type="text" name="fmobileNumber" #fmobileNumber="ngModel" [(ngModel)]="ParentsDetails.fmobileNumber" ngModel class="form-control">
+                    </div>
+                  </div><br>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label>Aaadhar Number *</label>
+                      <input type="text" name="faadharNumber" #faadharNumber="ngModel" [(ngModel)]="ParentsDetails.faadharNumber" ngModel class="form-control">
+                    </div>
+                  </div>
+                </div><br>
+                <label>Mother Details</label>
+                <br><br>
+                <div class="mother_details">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label>Mother Name *</label>
+                      <input type="text" name="motherName" [(ngModel)]="ParentsDetails.motherName" #motherName="ngModel" ngModel class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                      <label>job *</label>
+                      <input type="text" name="mjob" #mjob="ngModel" [(ngModel)]="ParentsDetails.mjob" ngModel class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                      <label>Mobile Number *</label>
+                      <input type="text" name="mmobileNumber" #mmobileNumber="ngModel" [(ngModel)]="ParentsDetails.mmobileNumber" ngModel class="form-control">
+                    </div>
+                  </div><br>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label>Aaadhar Number *</label>
+                      <input type="text" name="maadharNumber" #maadharNumber="ngModel" [(ngModel)]="ParentsDetails.maadharNumber" ngModel class="form-control">
+                    </div>
+                  </div>
+                </div><br>
+                <button class="btn btn-md">Save</button>
+                </form>
+              </div>
               <div id="contact" class="tab-pane">Contact</div>
             </div>
           </div>
@@ -133,10 +232,13 @@
           <div class="panel-body">
             <div class="tab-content">
               <div class="img text-center">
-                <img src="../../../assets/img/school/user.png" width="100">
+                <img src="../../../assets/img/school/user.png" class="img-circle" width="100">
               </div>
             </div>
           </div>
         </section>
   </div>
 </div>
+
+
+<ngx-spinner [visible]="showSpinner" [config]="spinnerConfig"></ngx-spinner>

@@ -1,0 +1,86 @@
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel">
+        <header class="panel-heading">
+           Acadamic Details
+         </header>
+         <div class="panel-body">
+            <form class="form" method="" action="" #acadamicClass="ngForm" (ngSubmit)='addAcadamic(acadamicClass.value)'>
+             <div class="row">
+               <div class="col-md-12">
+                 <label>Standard *</label>
+                  <select class="form-control" name="className" #className="ngModel" ngModel>
+                     <option value="" disabled>Select</option>
+                     <option *ngFor="let cl of class" value="{{cl}}">{{cl}}</option>
+                  </select>
+                </div><br>
+                <div class="col-md-12">
+                    <label>Acadamic Year *</label>
+                    <select class="form-control" name="acadamicYear" #acadamicYear="ngModel" ngModel  required >
+                        <option value="" disabled>Acadamic Year</option>
+                        <option *ngFor="let year of AYear" value="{{year}}">{{year}}</option>
+                    </select>  
+                   </div><br>
+                <div class="col-md-12">
+                    <label>Section *</label>
+                     <select class="form-control" name="section" #section="ngModel" ngModel>
+                        <option value="" disabled>Select</option>
+                        <option *ngFor="let cl of sec" value="{{cl}}">{{cl}}</option>
+                     </select>
+                   </div><br>
+                   <div class="col-md-12">
+                      <label>Total Students *</label>
+                      <input type="text" name="totalStudents" #totalStudents="ngModel" ngModel class="form-control">                    
+                   </div><br>
+                   <div class="col-md-12">
+                      <label>Class Teacher *</label>
+                      <input type="text" name="classTeachers" #classTeachers="ngModel" ngModel class="form-control">                    
+                   </div>
+             </div><br>
+             <button class="btn btn-md">Save</button>
+            </form>
+           <br>
+         </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+        <div class="panel">
+         <div class="panel-heading">
+           Acadamic List
+         </div>
+         <div class="panel-body">
+                <select class="form-control" name="acadamicYear" (change)="find(acadamicYear.value)" #acadamicYear="ngModel" ngModel  required >
+                    <option value="" disabled>Acadamic Year</option>
+                    <option *ngFor="let year of AYear" value="{{year}}">{{year}}</option>
+                </select>  
+           <table class="table bg-light">
+               <thead>
+                   <tr>
+                       <th class="text-center">#</th>
+                       <th class="text-center">Standard</th>
+                       <th class="text-center">Section</th>
+                       <th class="text-center">Max No Of Students</th>
+                       <th class="text-center">Available Seats</th>
+                       <th class="text-center">Class Teacher</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr *ngFor="let user of findAcadamin;let i=index">
+                       <td class="text-center">{{i+1}}</td>
+                       <td class="text-center">{{user.className}}</td>
+                       <td class="text-center">{{user.section}}</td>
+                       <td class="text-center">{{user.totalStudents}}</td>
+                       <td class="text-center">{{user.availableSeats}}</td>
+                       <td class="text-center">{{user.classTeachers}}</td>
+                       <td class="td-actions text-right">
+                           <button (click)=del(user) type="button" rel="tooltip" class="btn btn-danger">
+                               <i class="fa fa-times-circle" aria-hidden="true"></i>
+                           </button>
+                       </td>
+                   </tr>
+               </tbody>
+           </table>
+           </div>
+           </div>
+       </div>
+  </div>

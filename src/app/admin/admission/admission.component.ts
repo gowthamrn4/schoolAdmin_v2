@@ -3,6 +3,8 @@ import { DataService } from '../../service/data.service';
 import {Http} from '@angular/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+declare var $:any;
+declare var jQuery:any;
 
 @Component({
   selector: 'app-admission',
@@ -15,6 +17,7 @@ export class AdmissionComponent implements OnInit {
   States=['Andaman and Nicobar Islands','Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chandigarh','Chhattisgarh','Dadra and Nagar Haveli','Daman and Diu','Delhi','Goa','Gujarat','Haryana','Himachal Pradesh','Jammu and Kashmir','Jharkhand','Karnataka','Kerala','Lakshadweep','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Orissa','Pondicherry','Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana','Tripura','Uttaranchal','Uttar Pradesh','West Bengal']
   hostel=true;    /* show hostel form */
   transport=true; /* show transport form */
+  checkad:any /* check admission avaliable seats */
   @ViewChild('myForm') formValues;
   admission:any;
   constructor(private dataservice:DataService) { }
@@ -79,4 +82,41 @@ export class AdmissionComponent implements OnInit {
       this.admission =res;
     })
   }
+
+  /* check admission  */
+
+  checkAdmission(value){
+   let data = {
+    acadamicYear:value.acadamicYear,
+    standard:value.standard
+   }
+   this.dataservice.checkAdmisionservice(data).subscribe(res=>{
+     this.checkad=res;
+     if(res.message==="Admission Closed"){
+      $.toast({
+        heading: res.message,
+        text: [
+            'Fork the repository', 
+            'Improve/extend the functionality', 
+            'Create a pull request'
+        ],
+        icon: 'error'
+    })
+     }else{
+       for(let i=0;i<this.checkad.length;i++){
+         console.log(this.checkad[i].classTeachers)
+         $.toast({
+          heading: 'available Seats'+this.checkad[i].availableSeats,
+          text: [
+              'Class Teachers'+this.checkad[i].classTeachers, 
+              this.checkad[i].className+this.checkad[i].section, 
+              'Acadamic Year'+this.checkad[i].acadamicYear
+          ],
+          icon: 'success'
+      })
+       }
+     }
+   })
+  }
+  /* end check admission*/
 }
